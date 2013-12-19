@@ -11,6 +11,7 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
 
     # TemplateView + Login
+    url(r'^$', TemplateView.as_view(template_name="home.html"), {}, 'home'),
     #url(r'^$', login_required(TemplateView.as_view(template_name="home.html")), {}, 'home'),
 )
 
