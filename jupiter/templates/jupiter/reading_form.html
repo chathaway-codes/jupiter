@@ -5,7 +5,7 @@
     
         <input type='hidden' name='csrfmiddlewaretoken' value='0YNfZNaM2LkTK0rhmpcq1Mo9iek0pEQU' />
         
-            <div class="control-group">
+            <div class="control-group" id="id_reading_group">
                 <b style="color: red"></b>
                 <label for="id_type" class="control-label">Type</label>
                 <div class="controls">
@@ -21,7 +21,7 @@
                 
             </div>
 
-            <div class="control-group" id="id_reading_group>
+            <div class="control-group">
                 <b style="color: red"></b>
                 <label for="id_reading" class="control-label">Reading</label>
                 <div class="controls">
@@ -41,14 +41,14 @@
       var type = "";
       for(var i=0; i < options.length; i += 1) {
         var c = options[i].split('=');
-        if(c[0] == 'type') {
+        if(c[0] == "type") {
           type = c[1];
           break;
         }
       }
 
       if(type != "") {
-        $("#id_reading").value = type;
+        $("#id_type").val(c[1]);
         $("#id_reading_group").hide();
       }
     });
