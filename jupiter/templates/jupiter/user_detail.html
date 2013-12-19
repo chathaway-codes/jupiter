@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block page-header %}
-<h3 style="color:Black;font-variant:small-caps"3>Hello  {{ object }}! </h3> 
+<h2 style="color:Black;font-variant:small-caps"3>Hello  {{ object }}! </h2> 
 {% endblock %}
 
 {% block content %}
@@ -28,23 +28,59 @@
             </div> -->
 
 <div class="btn-group">
-  <button href="{% url 'user_detail' %}?type=WGHT" type="button" class="btn btn-info ">Weight</button>
-  <button href="{% url 'user_detail' %}?type=HEHT" type="button" class="btn btn-info ">Height</button>
-  <button href="{% url 'user_detail' %}?type=BLSG" type="button" class="btn btn-info ">Blood Sugar Level</button>
- <button href="{% url 'user_detail' %}?type=PLSE" type="button" class="btn btn-info ">Blood Pressure</button>
-  <button href="{% url 'user_detail' %}?type=BPRS" type="button" class="btn btn-info ">Heart Rate</button>
+  <button href="{% url 'user_detail' %}?type=WGHT" type="button" class="btn btn-info"  id ='WGHT' >Weight</button>
+  <button href="{% url 'user_detail' %}?type=HEHT" type="button" class="btn btn-info " id = 'HEHT' >Height</button>
+  <button href="{% url 'user_detail' %}?type=BLSG" type="button" class="btn btn-info "  >Blood Sugar Level</button>
+ <button href="{% url 'user_detail' %}?type=PLSE" type="button" class="btn btn-info "  id = 'PLSE' >Blood Pressure</button>
+  <button href="{% url 'user_detail' %}?type=BPRS" type="button" class="btn btn-info "  >Heart Rate</button>
 
 
 
 </div>
+
+  <!-- <div id ='wghtDiv' class="hide"> meemereeee  </div> -->
+ <div class=' hide' style="padding:20px" id='wghtToggle'>  mmmmmmmmm </div>
+
 
 
 <div>
   <h3 style="color:Black;font-variant:small-caps">Plan Group Activity</h3>
   <div >
-    <button style=" background-color:green" href="{% url 'user_detail' %}?type=WGHT" type="button" class="btn btn-success ">Find Park</button>
-    <button style=" background-color:brown" href="{% url 'user_detail' %}?type=HEHT" type="button" class="btn btn-success ">Find Trail</button>
+    <button style=" background-color:#129f1f" href="{% url 'user_detail' %}?type=WGHT" type="button" class="btn btn-success ">Find Park</button>
+    <button style=" background-color:#cb9d7c" href="{% url 'user_detail' %}?type=HEHT" type="button" class="btn btn-success ">Find Trail</button>
   </div>
 </div>
 
+
+
+<script>
+      
+      // $("#Person1").click(function(e) {
+      //     e.preventDefault();
+      //     $('#badge1').html(parseInt($('#badge1').html(), 10)+1)
+      // });
+
+      // $("#Person2").click(function(e) {
+      //     e.preventDefault();
+      //     $('#badge2').html(parseInt($('#badge2').html(), 10)+1)
+      // });
+
+      // $("#Person3").click(function(e) {
+      //     e.preventDefault();
+      //     $('#badge3').html(parseInt($('#badge3').html(), 10)+1)
+      // });
+
+        $("#wghtToggle").click(function () {
+                    if( $('#wghtDiv').hasClass('hide')) { 
+                        $('#wghtDiv').removeClass('hide').addClass('show');
+                    } 
+                    else{
+                        $('#wghtDiv').removeClass('show').addClass('hide');
+                    };   
+                });
+
+
+
+
+  </script>
 {% endblock %}
