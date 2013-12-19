@@ -1,25 +1,56 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    {% if form.is_multipart %}
-        <form class="form-horizontal" method="post" action="{{ action }}" enctype="multipart/form-data">
-    {% else %}
-        <form class="form-horizontal" method="post" action="{{ action }}">
-    {% endif %}
-        {% csrf_token %}
-        {% for field in form %}
+        <form class="form-horizontal" method="post" action="">
+    
+        <input type='hidden' name='csrfmiddlewaretoken' value='0YNfZNaM2LkTK0rhmpcq1Mo9iek0pEQU' />
+        
             <div class="control-group">
-                <b style="color: red">{{ field.errors }}</b>
-                <label for="id_{{ field.html_name }}" class="control-label">{{ field.label }}</label>
+                <b style="color: red"></b>
+                <label for="id_type" class="control-label">Type</label>
                 <div class="controls">
-                    {{ field }}
+                    <select id="id_type" name="type">
+<option value="" selected="selected">---------</option>
+<option value="WGHT">Weight</option>
+<option value="HEHT">Height</option>
+<option value="BLSG">Blood Sugar</option>
+<option value="PLSE">Pulse</option>
+<option value="BPRS">Blood Pressure</option>
+</select>
                 </div>
-                {% if field.help_text %}
-                        <span class="help-inline">{{ field.help_text }}</span>
-                {% endif %}
+                
             </div>
-        {% endfor %}
+
+            <div class="control-group" id="id_reading_group>
+                <b style="color: red"></b>
+                <label for="id_reading" class="control-label">Reading</label>
+                <div class="controls">
+                    <input id="id_reading" name="reading" step="0.01" type="number" />
+                </div>
+
+            </div>
+        
         <button type="submit" class="btn btn-primary">Save changes</button>
         <button type="button" class="btn" onclick="javascript:history.go(-1)">Cancel</button>
     </form>
+
+  <script type="text/javascript">
+    $(function() {
+      var get = window.location.search.replace( "?", "" );
+      var options = get.split("&");
+      var type = "";
+      for(var i=0; i < options.length; i += 1) {
+        var c = options[i].split('=');
+        if(c[0] == 'type') {
+          type = c[1];
+          break;
+        }
+      }
+
+      if(type != "") {
+        $("#id_reading").value = type;
+        $("#id_reading_group").hide();
+      }
+    });
+  </script>
 {% endblock %}

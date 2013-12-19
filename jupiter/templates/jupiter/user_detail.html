@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block page_title %}
+Hello {{ object }}!
+{% endblock %}
+
+{% block content %}
+<div>
+  <h2>My Groups</h2>
+  {% for g in user.groups.all %}
+    <h3>{{ g }}</h3>
+    {% for u in g.user_set.all %}
+      {% if u != object %}
+        {{ u }} <small><a>message</a></small>
+      {% endif %}
+    {% endfor %}
+  {% endfor %}
+</div>
+
+<div>
+  <h2>Report reading</h2>
+  <ul>
+    <li>Report weight</li>
+    <li>Report height</li>
+    <li>Report Blood Sugar Level</li>
+    <li>Pulse</li>
+    <li>Blood Pressure</li>
+  </ul>
+</div>
+
+<div>
+  <h2>Plan Group Activity</h2>
+  <ul>
+    <li>Find park</li>
+    <li>Find trail</li>
+  </ul>
+</div>
+
+{% endblock %}
