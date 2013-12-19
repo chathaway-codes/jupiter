@@ -1,8 +1,8 @@
 from django.views.generic.detail import DetailView
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView
 
-from jupiter.models import Reading
-from jupiter.forms import ReadingForm
+from jupiter.models import Reading, User
+from jupiter.forms import ReadingForm, UserForm
 
 class ReadingCreate(CreateView):
   model = Reading
@@ -20,4 +20,9 @@ class ReadingCreate(CreateView):
     form.instance.user = self.request.user
     return super(ReadingCreate, self).form_valid(form)
 
+class UserEdit(UpdateView):
+  model = User
+  form_class = UserForm
 
+  def get_object(self):
+    return User.objects.all()[0]

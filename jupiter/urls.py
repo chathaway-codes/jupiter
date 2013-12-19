@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.conf import settings
 
 from jupiter.views import ReadingCreate
+from jupiter.views import UserEdit
 
 from django.contrib import admin
 admin.autodiscover()
@@ -19,6 +20,8 @@ urlpatterns = patterns('',
 
     # Views for stuff and things
     url(r'^reading/create$', ReadingCreate.as_view(), name='reading_create'),
+
+    url(r'^user/edit$', UserEdit.as_view(), name='user_edit'),
 )
 
 if settings.DEBUG:
