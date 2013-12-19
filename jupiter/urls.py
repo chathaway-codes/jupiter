@@ -3,6 +3,8 @@ from django.views.generic import TemplateView
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
 
+from jupiter.views import ReadingCreate
+
 from django.contrib import admin
 admin.autodiscover()
 
@@ -13,6 +15,10 @@ urlpatterns = patterns('',
     # TemplateView + Login
     url(r'^$', TemplateView.as_view(template_name="home.html"), {}, 'home'),
     #url(r'^$', login_required(TemplateView.as_view(template_name="home.html")), {}, 'home'),
+
+
+    # Views for stuff and things
+    url(r'^reading/create$', ReadingCreate.as_view(), name='reading_create'),
 )
 
 if settings.DEBUG:
