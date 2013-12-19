@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
 
-{% block page_title %}
+{% block page-header %}
 Hello {{ object }}!
 {% endblock %}
 
 {% block content %}
 <div>
-  <h2>My Groups</h2>
+  <h3 style="color:Black;font-variant:small-caps"3>My Groups</h3>
   {% for g in user.groups.all %}
     <h3>{{ g }}</h3>
     {% for u in g.user_set.all %}
@@ -18,22 +18,33 @@ Hello {{ object }}!
 </div>
 
 <div>
-  <h2>Report reading</h2>
-  <ul>
-    <li><button href="{% url 'user_detail' %}?type=WGHT">Report weight</button></li>
-    <li>Report height</li>
-    <li>Report Blood Sugar Level</li>
-    <li>Pulse</li>
-    <li>Blood Pressure</li>
-  </ul>
+  <h3 style="color:Black;font-variant:small-caps">Report Reading</h3>
+  
 </div>
 
+<!-- div> 
+                <a class="btn btn-danger" href="#">            <i class="icon-repeat"></i> Reload</a>
+                <a class="btn btn-small" href="#">             <i class="icon-cog"></i></a>
+            </div> -->
+
+<div class="btn-group">
+  <button href="{% url 'user_detail' %}?type=WGHT" type="button" class="btn btn-info ">Weight</button>
+  <button href="{% url 'user_detail' %}?type=HEHT" type="button" class="btn btn-info ">Height</button>
+  <button href="{% url 'user_detail' %}?type=BLSG" type="button" class="btn btn-info ">Blood Sugar Level</button>
+ <button href="{% url 'user_detail' %}?type=PLSE" type="button" class="btn btn-info ">Blood Pressure</button>
+  <button href="{% url 'user_detail' %}?type=BPRS" type="button" class="btn btn-info ">Heart Rate</button>
+
+
+
+</div>
+
+
 <div>
-  <h2>Plan Group Activity</h2>
-  <ul>
-    <li>Find park</li>
-    <li>Find trail</li>
-  </ul>
+  <h3 style="color:Black;font-variant:small-caps">Plan Group Activity</h3>
+  <div >
+    <button style=" background-color:green" href="{% url 'user_detail' %}?type=WGHT" type="button" class="btn btn-success ">Find Park</button>
+    <button style=" background-color:brown" href="{% url 'user_detail' %}?type=HEHT" type="button" class="btn btn-success ">Find Trail</button>
+  </div>
 </div>
 
 {% endblock %}
