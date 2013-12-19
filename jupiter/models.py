@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django.core.urlresolvers import reverse
 from django.conf import settings
 
 class Reading(models.Model):
@@ -36,5 +37,8 @@ class User(AbstractUser):
   history_blood_pressure = models.NullBooleanField(null=True, blank=True)
 
   physically_active = models.NullBooleanField(null=True, blank=True)
+
+  def get_absolute_url(self):
+    return reverse('home')
 
 
