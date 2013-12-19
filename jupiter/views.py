@@ -28,6 +28,11 @@ class UserDetail(DetailView):
     self.request = request
     return super(UserDetail, self).dispatch(request, *args, **kwargs)
 
+  def get_context_data(self, **kwargs):
+    context = super(UserDetail, self).get_context_data(**kwargs)
+    context['form'] = ReadingForm()
+    return context
+
   def get_object(self):
     return self.request.user
 

@@ -19,7 +19,7 @@ class Reading(models.Model):
   type = models.CharField(max_length=4, choices=READING_TYPES)
 
   def get_absolute_url(self):
-    return reverse('home')
+    return reverse('user_detail')
 
 class User(AbstractUser):
   # True = Female, False = Male
@@ -42,6 +42,6 @@ class User(AbstractUser):
   physically_active = models.NullBooleanField(null=True, blank=True)
 
   def get_absolute_url(self):
-    return reverse('home')
+    return reverse('user_detail')
 
 

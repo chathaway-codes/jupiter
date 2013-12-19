@@ -28,19 +28,31 @@
             </div> -->
 
 <div class="btn-group">
-  <button href="{% url 'user_detail' %}?type=WGHT" type="button" class="btn btn-info"  id ='WGHT' >Weight</button>
-  <button href="{% url 'user_detail' %}?type=HEHT" type="button" class="btn btn-info " id = 'HEHT' >Height</button>
-  <button href="{% url 'user_detail' %}?type=BLSG" type="button" class="btn btn-info "  >Blood Sugar Level</button>
- <button href="{% url 'user_detail' %}?type=PLSE" type="button" class="btn btn-info "  id = 'PLSE' >Blood Pressure</button>
-  <button href="{% url 'user_detail' %}?type=BPRS" type="button" class="btn btn-info "  >Heart Rate</button>
+  <button href="{% url 'user_detail' %}?type=WGHT" type="button" class="btn btn-info"  id ='WGHT' onclick="display_form('WGHT')" >Weight</button>
+  <button href="{% url 'user_detail' %}?type=HEHT" type="button" class="btn btn-info " id = 'HEHT' onclick="display_form('HEHT')" >Height</button>
+  <button href="{% url 'user_detail' %}?type=BLSG" type="button" class="btn btn-info " onclick="display_form('BLSG')"  >Blood Sugar Level</button>
+ <button href="{% url 'user_detail' %}?type=PLSE" type="button" class="btn btn-info "  id = 'PLSE' onclick="display_form('PLSE')">Heart Rate</button>
+  <button href="{% url 'user_detail' %}?type=BPRS" type="button" class="btn btn-info "  onclick="display_form('BPRS')">Systolic Blood Pressure</button>
 
 
 
 </div>
 
-  <!-- <div id ='wghtDiv' class="hide"> meemereeee  </div> -->
- <div class=' hide' style="padding:20px" id='wghtToggle'>  mmmmmmmmm </div>
-
+<div class=' hide' style="padding:20px" id='wghtDiv'>
+  <form method="post" action="{% url "reading_create" %}">
+  {% csrf_token %}
+  <label for="id_reading">Reading:</label><input id="id_reading" name="reading" step="0.01" type="number" />
+  <button type="submit" class="btn btn-primary">Save changes</button>
+  <div class="hide"><label for="id_type">Type:</label><select id="id_type" name="type">
+  <option value="" selected="selected">---------</option>
+  <option value="WGHT">Weight</option>
+  <option value="HEHT">Height</option>
+  <option value="BLSG">Blood Sugar</option>
+  <option value="PLSE">Pulse</option>
+  <option value="BPRS">Blood Pressure</option>
+  </select></div>
+  </form>
+</div>
 
 
 <div>
@@ -50,11 +62,11 @@
     <button style=" background-color:#cb9d7c" href="{% url 'user_detail' %}?type=HEHT" type="button" class="btn btn-success ">Find Trail</button>
   </div>
 </div>
+{% endblock %}
 
+{% block extra-head %}
+<script type="text/javascript">
 
-
-<script>
-      
       // $("#Person1").click(function(e) {
       //     e.preventDefault();
       //     $('#badge1').html(parseInt($('#badge1').html(), 10)+1)
@@ -70,17 +82,12 @@
       //     $('#badge3').html(parseInt($('#badge3').html(), 10)+1)
       // });
 
-        $("#wghtToggle").click(function () {
-                    if( $('#wghtDiv').hasClass('hide')) { 
-                        $('#wghtDiv').removeClass('hide').addClass('show');
-                    } 
-                    else{
-                        $('#wghtDiv').removeClass('show').addClass('hide');
-                    };   
-                });
-
-
-
-
+      function display_form(type) {
+      console.log("here1");
+        $("#wghtDiv").removeClass('hide').addClass('show');
+        $("#id_type").val(type);
+        console.log("Here");
+      }
   </script>
+
 {% endblock %}
