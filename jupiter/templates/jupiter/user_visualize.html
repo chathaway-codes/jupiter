@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+{% load timetags %}
+
+{% block extra-head %}
+  <script language="javascript" type="text/javascript" src="{{ STATIC_URL }}js/jquery.jqplot.min.js"></script>
+  <script type="text/javascript" src="{{ STATIC_URL }}js/plugins/jqplot.dateAxisRenderer.min.js"></script>
+  <script type="text/javascript" src="{{ STATIC_URL }}js/plugins/jqplot.canvasTextRenderer.min.js"></script>
+  <script type="text/javascript" src="{{ STATIC_URL }}js/plugins/jqplot.canvasAxisLabelRenderer.min.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/jquery.jqplot.css" />
+{% endblock %}
+
+{% block page-header %}
+Data Visualization for {{ object }}
+{% endblock %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-md-12">
+      <h3>Weight</h3>
+      <div id="weight_chart" style="height:100%;width:100%;"></div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <h3>Height</h3>
+      <div id="height_chart" style="height:100%;width:100%;"></div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <h3>Blood Sugar</h3>
+      <div id="blsg_chart" style="height:100%;width:100%;"></div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <h3>Resting Heart Rate</h3>
+      <div id="plse_chart" style="height:100%;width:100%;"></div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <h3>Systolic Blood Pressure</h3>
+      <div id="bprs_chart" style="height:100%;width:100%;"></div>
+    </div>
+  </div>
+
+
+  <script type="text/javascript">
+    $(function() {
+      var line = [
+      {% for r in user.reading_set|weight_only %}
+        ['{{ r.when|print_timestamp }}', {{ r.reading }}],
+      {% endfor %}
+      ];
+      $.jqplot('weight_chart',  [line], {
+        axes:{xaxis:{renderer:$.jqplot.DateAxisRenderer}},
+        series:[{lineWidth:4, markerOptions:{style:'square'}}]
+      });
+    });
+
+    $(function() {
+      var line = [
+      {% for r in user.reading_set|height_only %}
+        ['{{ r.when|print_timestamp }}', {{ r.reading }}],
+      {% endfor %}
+      ];
+      $.jqplot('height_chart',  [line], {
+        axes:{xaxis:{renderer:$.jqplot.DateAxisRenderer}},
+        series:[{lineWidth:4, markerOptions:{style:'square'}}]
+      });
+    });
+
+    $(function() {
+      var line = [
+      {% for r in user.reading_set|blsg_only %}
+        ['{{ r.when|print_timestamp }}', {{ r.reading }}],
+      {% endfor %}
+      ];
+      $.jqplot('blsg_chart',  [line], {
+        axes:{xaxis:{renderer:$.jqplot.DateAxisRenderer}},
+        series:[{lineWidth:4, markerOptions:{style:'square'}}]
+      });
+    });
+
+    $(function() {
+      var line = [
+      {% for r in user.reading_set|plse_only %}
+        ['{{ r.when|print_timestamp }}', {{ r.reading }}],
+      {% endfor %}
+      ];
+      $.jqplot('plse_chart',  [line], {
+        axes:{xaxis:{renderer:$.jqplot.DateAxisRenderer}},
+        series:[{lineWidth:4, markerOptions:{style:'square'}}]
+      });
+    });
+
+    $(function() {
+      var line = [
+      {% for r in user.reading_set|bprs_only %}
+        ['{{ r.when|print_timestamp }}', {{ r.reading }}],
+      {% endfor %}
+      ];
+      $.jqplot('bprs_chart',  [line], {
+        axes:{xaxis:{renderer:$.jqplot.DateAxisRenderer}},
+        series:[{lineWidth:4, markerOptions:{style:'square'}}]
+      });
+    });
+
+
+  </script>
+{% endblock %}

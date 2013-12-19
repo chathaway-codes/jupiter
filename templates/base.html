@@ -15,6 +15,9 @@
     <link href="{{ STATIC_URL }}css/1-col-portfolio.css" rel="stylesheet">
 
     <script src="{{ STATIC_URL }}js/jquery-1.10.2.js"></script>
+
+    {% block extra-head %}
+    {% endblock %}
   </head>
 
   <body>
@@ -47,7 +50,7 @@
       <div class="row">
       
         <div class="col-lg-12">
-          <h1 class="page-header">{% block page-header %}{% endblock %}</h1>
+          <h2 class="page-header">{% block page-header %}{% endblock %}</h2>
         </div>
 
       </div>

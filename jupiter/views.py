@@ -31,6 +31,10 @@ class UserDetail(DetailView):
   def get_object(self):
     return self.request.user
 
+class UserVisualize(DetailView):
+  model = User
+  template_name = 'jupiter/user_visualize.html'
+
 class UserEdit(UpdateView):
   model = User
   form_class = UserForm
