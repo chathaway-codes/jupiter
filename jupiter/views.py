@@ -1,5 +1,6 @@
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView
+from django.contrib import messages
 
 from jupiter.models import Reading, User
 from jupiter.forms import ReadingForm, UserForm
@@ -18,6 +19,7 @@ class ReadingCreate(CreateView):
 
   def form_valid(self, form):
     form.instance.user = self.request.user
+    messages.success(self.request, "Saved the data!")
     return super(ReadingCreate, self).form_valid(form)
 
 class UserDetail(DetailView):
