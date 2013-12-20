@@ -27,7 +27,9 @@ urlpatterns = patterns('',
 
     url(r'^user/(?P<pk>\d+)/visualize$', UserVisualize.as_view(), name='user_vidualize'),
 
-    url(r'^activity/create$', PhysicalActivityCreate.as_view(), name='physical_activity_create')
+    url(r'^activity/create$', PhysicalActivityCreate.as_view(), name='physical_activity_create'),
+
+    url(r'^activity/location$', TemplateView.as_view(template_name="jupiter/location.html"), name='activity_locator'),
 )
 
 if settings.DEBUG:
