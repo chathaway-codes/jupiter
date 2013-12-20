@@ -3,7 +3,7 @@ from django.forms import ModelForm
 from django.conf import settings
 from django.contrib.auth import get_user_model
 
-from jupiter.models import Reading, PhysicalActivity
+from jupiter.models import Reading, PhysicalActivity, Activity
 
 class ReadingForm(ModelForm):
   class Meta:
@@ -21,3 +21,7 @@ class PhysicalActivityForm(ModelForm):
   class Meta:
     model = PhysicalActivity
     exclude = ('user', 'when',)
+
+class ActivityForm(ModelForm):
+  class Meta:
+    model = Activity
