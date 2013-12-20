@@ -16,7 +16,7 @@ def calc_risk(weight, height, age):
   return math.floor(100*float(array[int(age-20)][int(round(bmi-18,0))])*100)/100
 
 def prob_diabetes(user):
-  # try:
+  try:
     weight 			= user.reading_set.filter(type="WGHT").order_by("-when")[0].reading
     height 			= user.reading_set.filter(type="HEHT").order_by("-when")[0].reading
     bmi 			= (weight*0.453592)/((height*0.0254)**2)
@@ -38,8 +38,8 @@ def prob_diabetes(user):
  <p>If you lose 10 pounds, that risk would drop to %s%s. </p>
 """ % (calc_risk(weight-10, height, age), "%",)
     return message1 + message2
-  # except:
-  #   return "Please fill out your profile and add weight and height readings to get your BMI risk"
+  except:
+    return "Please fill out your profile and add weight and height readings to get your BMI risk"
 
 register.filter(prob_diabetes)
 
