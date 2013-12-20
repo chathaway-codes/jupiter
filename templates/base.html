@@ -39,6 +39,7 @@
           <ul class="nav navbar-nav">
             <li><a href="{% url 'user_detail' %}">Dashboard</a></li>
             {% if user.is_authenticated %}
+             <li><a href="{% url 'user_form' pk=user.id %}">My Profile</a></li>
               <li><a href="{% url 'user_vidualize' pk=user.id %}">My Visualization</a></li>
             {% endif %}
           </ul>
@@ -65,7 +66,7 @@
             {% endif %}
 
 
-          
+
         </div>
 
 
