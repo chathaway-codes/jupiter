@@ -8,10 +8,10 @@ def prob_diabetes(user):
   try:
     weight = user.reading_set.filter(type="WGHT").order_by("-when")[0].reading
     height = user.reading_set.filter(type="HEHT").order_by("-when")[0].reading
-    bmi = (weight*0.453592)/((height*0.0254)**2)
-    current_risk = math.floor(100*float(array[user.age][math.floor(bmi)])*100)/100
-    plus_10_risk = math.floor(100*float(array[user.age+10][math.floor(bmi)])*100)/100
-    return "<p>In tens years, at your current weight, your risk of diabates will increase by a factor of " + repr(math.ceil(plus_10_risk/current_risk)) + "</p><p>In ten years, you will have a " + repr(plus_10_risk) + "% chance of having diabetes"
+    bmi = (weight*0.453592)/((height*0.0254)**2)-18
+    current_risk = math.floor(100*float(array[user.age-20][math.floor(bmi)])*100)/100
+    plus_10_risk = math.floor(100*float(array[user.age-20+10][math.floor(bmi)])*100)/100
+    return "<p>Your current risk of diabetes is " + repr(current_risk) + "%</p><p>In ten years, you will have a " + repr(plus_10_risk) + "% chance of having diabetes"
   except:
     return "Please fill out your profile and add weight and height readings to get your BMI risk"
 
