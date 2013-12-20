@@ -8,6 +8,12 @@ Creating an event!
   <script>
     $(function() {
       $( "#id_when" ).datepicker();
+
+      var get = window.location.search.replace( "?", "" );
+      if(get != "") {
+        var location = get.split("=")[1];
+        $("#id_where").val(unescape(location));
+      }
     });
   </script>
         <form class="form-horizontal" method="post" action="">
