@@ -33,13 +33,6 @@ urlpatterns = patterns('',
     url(r'^activity/create$', ActivityCreate.as_view(), name='activity_create'),
 
     url(r'^activity/location$', TemplateView.as_view(template_name="jupiter/location.html"), name='activity_locator'),
-
-
-
-    url(r'^login/$', 'django.contrib.auth.views.login', {'template_name': 'home.html'}),
-    url(r'^accounts/register/$', RegistrationView.as_view(), name='registration_register'),
-    url(r'^accounts/chpasswd/done/?', 'django.contrib.auth.views.password_change_done', {'template_name':'password_change_done.html'}),
-    url(r'^accounts/change/password/?', 'django.contrib.auth.views.password_change', {'template_name':'change_password.html', 'post_change_redirect': '/accounts/chpasswd/done/' }, name="change_password"),
 )
 
 if settings.DEBUG:
