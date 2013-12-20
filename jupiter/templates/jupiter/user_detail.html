@@ -38,13 +38,21 @@
     {% endif %}
   {% endfor %}
 </div>
-  <div style="padding:5px;">
-  <table>
-  <tr><th><label style="padding:5px;" for="id_intensity">Intensity:&nbsp;</label></th><td><input id="id_intensity" name="intensity" step="0.01" type="number" /></td></tr>
-<tr><th><label for="id_duration">Duration:&nbsp;</label></th><td><input id="id_duration" name="duration" step="0.01" type="number" /></td></tr>
-  </table>
+  <div class='row' style="padding:5px;display:inline;">
+      <p></p>
+      <div class="col-lg-3 col-md-3" >
+          <label style="padding:5px;" for="id_intensity">Intensity:&nbsp;</label><input id="id_intensity" name="intensity" step="0.01" type="number" />
+          <p></p>
+            <label style="padding:5px;" for="id_duration">Duration:&nbsp;</label><input id="id_duration" name="duration" step="0.01" type="number" />
+        </div>
+        <div class="col-lg-5 col-md-5" >
+        <br>
+         <button type="submit" class="btn btn-primary">Log Me!</button>
+
+        </div>
+
   </div>
-  <button type="submit" class="btn btn-primary">Log Me!</button>
+
 
   <div class="hidden">
   <select id="id_physical_type" name="type">
