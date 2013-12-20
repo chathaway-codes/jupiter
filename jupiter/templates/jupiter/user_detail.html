@@ -130,7 +130,36 @@
 <div id='uploadDiv'>
 
 	<h3 style="color:Black;font-variant:small-caps">Get data from external device</h3> 
-	<input class="btn btn-primary" id="id_external" name="external" value="Get Data" type="submit" />
+	<!-- <input class="btn btn-primary" id="id_external" name="external" value="Get Data" type="submit" /> -->
+
+  <div class="btn-group" data-toggle="buttons">
+    <label class="btn btn-default **active**">
+        <input type="radio" name="inputWalls" id="inputWalls" value="Excellent" checked>
+    Apple 5S </label>
+    <label class="btn btn-default">
+        <input type="radio" name="inputWalls" id="inputWalls" value="Good">
+    Samsung Galaxy </label>
+    <label class="btn btn-default">
+        <input type="radio" name="inputWalls" id="inputWalls" value="Poor">
+    HTC One </label>
+</div>
+  
+  <input class="btn btn-primary" id="id_external" name="external" value="Attach App to Phone" type="submit" />
+<br>
+<p></p>
+  <div class="btn-group" data-toggle="buttons">
+    <label class="btn btn-default **active**">
+        <input type="radio" name="inputWalls" id="inputWalls" value="Excellent" checked>
+    Nike Fuel Band</label>
+    <label class="btn btn-default">
+        <input type="radio" name="inputWalls" id="inputWalls" value="Good">
+    FitBit </label>
+    <label class="btn btn-default">
+        <input type="radio" name="inputWalls" id="inputWalls" value="Poor">
+    Jawbone </label>
+</div>
+  
+  <input class="btn btn-primary" id="id_external" name="external" value="Get Data Via Api" type="submit" />
 
 </div>
 
