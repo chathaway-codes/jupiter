@@ -50,12 +50,22 @@ class PhysicalActivity(models.Model):
     return reverse('user_detail')
 
 class User(AbstractUser):
+  BOOLEAN_CHOICES = (
+      (None, "I do not know now"),
+      (True, "Yes"),
+      (False, "No")
+  )
+  BOOLEAN_CHOICES_SEX = (
+      (None, "Prefer not to say"),
+      (True, "Female"),
+      (False, "Male")
+  )
   # True = Female, False = Male
-  sex = models.NullBooleanField(null=True, blank=True)
+  sex = models.NullBooleanField(null=True, blank=True, choices=BOOLEAN_CHOICES_SEX)
 
   age = models.IntegerField(null=True, blank=True)
 
-  history = models.NullBooleanField(null=True, blank=True)
+  history = models.NullBooleanField(null=True, blank=True, choices=BOOLEAN_CHOICES)
 
   ETHNICITY_OPTIONS = (
     ('WHT', 'White'),
@@ -67,9 +77,9 @@ class User(AbstractUser):
   )
   ethnicity = models.CharField(max_length=4, choices=ETHNICITY_OPTIONS, null=True, blank=True)
 
-  history_blood_pressure = models.NullBooleanField(null=True, blank=True)
+  history_blood_pressure = models.NullBooleanField(null=True, blank=True, choices=BOOLEAN_CHOICES)
 
-  physically_active = models.NullBooleanField(null=True, blank=True)
+  physically_active = models.NullBooleanField(null=True, blank=True, choices=BOOLEAN_CHOICES)
 
   def get_absolute_url(self):
     return reverse('user_detail')

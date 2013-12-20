@@ -18,16 +18,12 @@ Creating an event!
   </script>
         <form class="form-horizontal" method="post" action="">
     
-        <input type='hidden' name='csrfmiddlewaretoken' value='0YNfZNaM2LkTK0rhmpcq1Mo9iek0pEQU' />
-        
+          {% csrf_token %}
             <div class="control-group">
                 <b style="color: red"></b>
                 <label for="id_group" class="control-label">Group</label>
                 <div class="controls">
-                    <select id="id_group" name="group">
-<option value="" selected="selected">---------</option>
-<option value="1">g1</option>
-</select>
+                    {{ form.group }}
                 </div>
                 
             </div>

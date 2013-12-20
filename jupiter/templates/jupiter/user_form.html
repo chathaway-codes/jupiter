@@ -1,17 +1,14 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <!-- {% include 'generic_form.html' %} -->
-
   <form class="form-horizontal" method="post" action="">
     
-        <!-- <input type='hi÷\dden' name='csrfmiddlewaretoken' value='NdV4qBnfV2pX5wLyDlyD2Z7JYx9esqd4' /> -->
           {% csrf_token %}
             <div class="control-group">
                 <b style="color: red"></b>
                 <label for="id_first_name" class="control-label">Name</label>
                 <div class="controls">
-                    <input id="id_first_name" maxlength="30" name="first_name" type="text"  placeHolder = 'Your Full Name'/>
+                    <input id="id_first_name" maxlength="30" name="first_name" type="text"  placeHolder = 'Your Full Name' value="{{ form.first_name.value }}" />
                 </div>
                 
             </div>
@@ -20,7 +17,7 @@
                 <b style="color: red"></b>
                 <label for="id_last_name" class="control-label">Last name</label>
                 <div class="controls">
-                    <input id="id_last_name" maxlength="30" name="last_name" type="text" />
+                    <input id="id_last_name" maxlength="30" name="last_name" type="text" value="{{ form.last_name.value }}" />
                 </div>
                 
             </div> -->
@@ -29,7 +26,7 @@
                 <b style="color: red"></b>
                 <label for="id_email" class="control-label" >Email address</label>
                 <div class="controls">
-                    <input id="id_email" maxlength="75" name="email" type="email" placeHolder= "YourEmail@any.com" />
+                    <input id="id_email" maxlength="75" name="email" type="email" placeHolder= "YourEmail@any.com" value="{{ form.email.value }}" />
                 </div>
                 
             </div>
@@ -38,11 +35,7 @@
                 <b style="color: red"></b>
                 <label for="id_sex" class="control-label">Your Sex</label>
                 <div class="controls">
-                    <select id="id_sex" name="sex">
-					<option value="1" selected="selected">Please Select</option>
-					<option value="2">Male</option>
-					<option value="3">Female</option>
-					</select>
+                    {{ form.sex }}
                 </div>
                 
             </div>
@@ -51,11 +44,7 @@
                 <b style="color: red"></b>
                 <label for="id_history" class="control-label">Do You Have History of Diabetes?</label>
                 <div class="controls">
-                    <select id="id_history" name="history">
-					<option value="1" selected="selected">Don't Know</option>
-					<option value="2">Yes</option>
-					<option value="3">No</option>
-					</select>
+                    {{ form.history }}
                 </div>
                 
             </div>
@@ -79,15 +68,7 @@
                 <b style="color: red"></b>
                 <label for="id_ethnicity" class="control-label">Family Ethnicity</label>
                 <div class="controls">
-                    <select id="id_ethnicity" name="ethnicity">
-					<option value="" selected="selected">---------</option>
-					<option value="WHT">White</option>
-					<option value="AFA">African American</option>
-					<option value="API">Asian/Pacific Islanders</option>
-					<option value="NA">Native American</option>
-					<option value="HIS">Hispanic/Latino</option>
-					<option value="OT">Other</option>
-					</select>
+                    {{ form.ethnicity }}
                 </div>
                 
             </div>
@@ -96,24 +77,14 @@
                 <b style="color: red"></b>
                 <label for="id_history_blood_pressure" class="control-label">History Blood Pressure</label>
                 <div class="controls">
-                    <select id="id_history_blood_pressure" name="history_blood_pressure">
-					<option value="1" selected="selected">Unknown</option>
-					<option value="2">Yes</option>
-					<option value="3">No</option>
-					</select>
-                </div>
-                
+                    {{ form.history_blood_pressure }}
             </div>
         
             <div class="control-group">
                 <b style="color: red"></b>
                 <label for="id_physically_active" class="control-label">Physical Activity</label>
                 <div class="controls">
-                    <select id="id_physically_active" name="physically_active">
-					<option value="1" selected="selected">Unknown</option>
-					<option value="2">Yes</option>
-					<option value="3">No</option>
-					</select>
+                    {{ form.physically_active }}
                 </div>
                 
             </div>
@@ -122,7 +93,7 @@
                 <b style="color: red"></b>
                 <label for="id_age" class="control-label">Name</label>
                 <div class="controls">
-                    <input id="id_age" maxlength="30" name="age" type="text"  placeHolder = 'Age'/>
+                    <input id="id_age" maxlength="30" name="age" type="text"  placeHolder = 'Age' value="{{ form.age.value }}"/>
                 </div>
 
             </div>
