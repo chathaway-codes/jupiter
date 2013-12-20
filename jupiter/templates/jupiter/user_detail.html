@@ -1,14 +1,16 @@
 {% extends 'base.html' %}
 
 {% block page-header %}
-<h2 style="color:Black;font-variant:small-caps"3>Hello  {{ object }}! </h2> 
+<div>
+<h2 style="color:Black;font-variant:small-caps;display:inline;"3>Hello  {{ object }}! </h2> 
+</div>
 {% endblock %}
 
 {% block content %}
 <div>
   <h3 style="color:Black;font-variant:small-caps"3>My Groups</h3>
   {% for g in user.groups.all %}
-  <div class="well well-sm">
+  <div class="well well-sm"  style="" >
     <h3>{{ g }}</h3>
     {% for u in g.user_set.all %}
       {% if u != object %}
@@ -26,16 +28,17 @@
 <div class="btn-group">
   {% for value,option in physical_form.fields.type.choices %}
     {% if value != "" %}
-    <button type="button" class="btn btn-info" id="{{ value }}" onclick="update_physical('{{ value }}')">{{ option }}</button>
+    <button type="button" class="btn btn-danger" id="{{ value }}" onclick="update_physical('{{ value }}')">{{ option }}</button>
     {% endif %}
   {% endfor %}
 </div>
+  <div style="padding:5px;">
   <table>
-  <tr><th><label for="id_intensity">Intensity:&nbsp;</label></th><td><input id="id_intensity" name="intensity" step="0.01" type="number" /></td></tr>
-<tr><th><label for="id_duration">Duration:</label></th><td><input id="id_duration" name="duration" step="0.01" type="number" /></td></tr>
+  <tr><th><label style="padding:5px;" for="id_intensity">Intensity:&nbsp;</label></th><td><input id="id_intensity" name="intensity" step="0.01" type="number" /></td></tr>
+<tr><th><label for="id_duration">Duration:&nbsp;</label></th><td><input id="id_duration" name="duration" step="0.01" type="number" /></td></tr>
   </table>
-
-  <button type="submit" class="btn btn-primary">Log!</button>
+  </div>
+  <button type="submit" class="btn btn-primary">Log Me!</button>
 
   <div class="hidden">
   <select id="id_physical_type" name="type">
@@ -117,7 +120,7 @@
       // });
 
       function display_form(type) {
-      console.log("here1");
+      // console.log("here1");
         $("#wghtDiv").removeClass('hide').addClass('show');
         $("#id_type").val(type);
       }
