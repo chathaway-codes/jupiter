@@ -26,16 +26,16 @@ def prob_diabetes(user):
     message1 		= """
 
 
-<p>Your current BMI is %s, and your current risk of diabetes is %s%s </p>
+<p>Your current BMI is %s, and your current risk of diabetes is %s%s.</p>
 """ % (int(round(bmi,0)), repr(current_risk), "%",)
     message2 = """
 
-<p>In ten years, you will have a %s%s chance of having diabetes
+<p>In ten years, you will have a %s%s chance of having diabetes.
 """ % (repr(plus_10_risk), "%",)
     if bmi >= 30:
       message2 += """
 
- <p>If you lose 10 pounts, that risk would be %s%s</p>
+ <p>If you lose 10 pounds, that risk would drop to %s%s. </p>
 """ % (calc_risk(weight-10, height, age), "%",)
     return message1 + message2
   # except:
