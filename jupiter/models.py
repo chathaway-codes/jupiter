@@ -21,6 +21,24 @@ class Reading(models.Model):
   def get_absolute_url(self):
     return reverse('user_detail')
 
+class PhysicalActivity(models.Model):
+  user = models.ForeignKey(settings.AUTH_USER_MODEL)
+  intensity = models.DecimalField(max_digits=5, decimal_places=2)
+  duration = models.DecimalField(max_digits=5, decimal_places=2)
+  when = models.DateTimeField()
+
+  ACTIVITY_TYPES = (
+    ('JOG', 'Jogging'),
+    ('RUN', 'Running'),
+    ('SWIM', 'Swimming'),
+    ('CYCL', 'Cycling'),
+    ('YOGA', 'Yoga'),
+    ('SKI', 'Skiing'),
+    ('HUNT', 'Being Hunted'),
+  )
+
+  type = models.CharField(max_length=4, choices=ACTIVITY_TYPES)
+
 class User(AbstractUser):
   # True = Female, False = Male
   sex = models.NullBooleanField(null=True, blank=True)

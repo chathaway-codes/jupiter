@@ -3,7 +3,7 @@ from django.views.generic import TemplateView
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
 
-from jupiter.views import ReadingCreate
+from jupiter.views import ReadingCreate, PhysicalActivityCreate
 from jupiter.views import UserDetail, UserVisualize, UserEdit
 
 from django.contrib import admin
@@ -26,6 +26,8 @@ urlpatterns = patterns('',
     url(r'^dashboard$', UserDetail.as_view(), name='user_detail'),
 
     url(r'^user/(?P<pk>\d+)/visualize$', UserVisualize.as_view(), name='user_vidualize'),
+
+    url(r'^activity/create$', PhysicalActivityCreate.as_view(), name='physical_activity_create')
 )
 
 if settings.DEBUG:

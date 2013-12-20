@@ -3,7 +3,7 @@ from django.forms import ModelForm
 from django.conf import settings
 from django.contrib.auth import get_user_model
 
-from jupiter.models import Reading
+from jupiter.models import Reading, PhysicalActivity
 
 class ReadingForm(ModelForm):
   class Meta:
@@ -16,3 +16,8 @@ class UserForm(ModelForm):
     exclude = ('password', 'last_login', 'is_superuser',
                'groups', 'user_permissions', 'username',
                'is_staff', 'is_active', 'date_joined',)
+
+class PhysicalActivityForm(ModelForm):
+  class Meta:
+    model = PhysicalActivity
+    exclude = ('user',)

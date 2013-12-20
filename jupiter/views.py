@@ -2,8 +2,8 @@ from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView
 from django.contrib import messages
 
-from jupiter.models import Reading, User
-from jupiter.forms import ReadingForm, UserForm
+from jupiter.models import Reading, User, PhysicalActivity
+from jupiter.forms import ReadingForm, UserForm, PhysicalActivityForm
 
 class ReadingCreate(CreateView):
   model = Reading
@@ -56,3 +56,20 @@ class UserEdit(UpdateView):
 
   def get_object(self):
     return self.request.user
+
+class PhysicalActivityCreate(CreateView):
+  model = PhysicalActivity
+  form_class = PhysicalActivityForm
+
+  def get_sucess_url(self):
+    return reverse('home')
+
+  def dispatch(self, request, *args, **kwargs):
+    self.kwargs = kwargs
+    self.request = request
+    return super(PhysicalActivityCreate, self).dispatch(request, *args, **kwargs)
+
+  def form_valid(self, form):
+    form.instance.user = self.request.user
+    messages.success(self.request, "Saved the data!")
+    return super(PhysicalActivityCreate, self).form_valid(form)
