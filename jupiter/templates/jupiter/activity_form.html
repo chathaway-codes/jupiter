@@ -30,23 +30,24 @@ Creating an event!
         
             <div class="control-group">
                 <b style="color: red"></b>
-                <label for="id_when" class="control-label">When</label>
+                <label for="id_when" class="control-label">Date</label>
                 <div class="controls">
-                    <input id="id_when" name="when" type="text" />
+                    <input id="id_when" name="when" placeholder="click here:" type="text" />
                 </div>
                 
             </div>
         
             <div class="control-group">
                 <b style="color: red"></b>
-                <label for="id_where" class="control-label">Where</label>
+                <label for="id_where" class="control-label">Location</label>
                 <div class="controls">
                     <input id="id_where" maxlength="255" name="where" type="text" />
                 </div>
                 
             </div>
-        
-        <button type="submit" class="btn btn-primary">Save changes</button>
+	
+	<br />        
+        <button type="submit" class="btn btn-primary">Save Changes</button>
         <button type="button" class="btn" onclick="javascript:history.go(-1)">Cancel</button>
     </form>
 {% endblock %}
