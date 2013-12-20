@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block page-header %}
+Creating an event!
+{% endblock %}
+
+{% block content %}
+  <script>
+    $(function() {
+      $( "#id_when" ).datepicker();
+    });
+  </script>
+        <form class="form-horizontal" method="post" action="">
+    
+        <input type='hidden' name='csrfmiddlewaretoken' value='0YNfZNaM2LkTK0rhmpcq1Mo9iek0pEQU' />
+        
+            <div class="control-group">
+                <b style="color: red"></b>
+                <label for="id_group" class="control-label">Group</label>
+                <div class="controls">
+                    <select id="id_group" name="group">
+<option value="" selected="selected">---------</option>
+<option value="1">g1</option>
+</select>
+                </div>
+                
+            </div>
+        
+            <div class="control-group">
+                <b style="color: red"></b>
+                <label for="id_when" class="control-label">When</label>
+                <div class="controls">
+                    <input id="id_when" name="when" type="text" />
+                </div>
+                
+            </div>
+        
+            <div class="control-group">
+                <b style="color: red"></b>
+                <label for="id_where" class="control-label">Where</label>
+                <div class="controls">
+                    <input id="id_where" maxlength="255" name="where" type="text" />
+                </div>
+                
+            </div>
+        
+        <button type="submit" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn" onclick="javascript:history.go(-1)">Cancel</button>
+    </form>
+{% endblock %}
+
+{% block extra-head %}
+  <script src="{{ STATIC_URL }}js/jquery-ui-1.10.3.custom.js"></script>
+  <link href="{{ STATIC_URL }}css/ui-lightness/jquery-ui-1.10.3.custom.css" rel="stylesheet">
+{% endblock %}

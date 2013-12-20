@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.conf import settings
 
 from jupiter.views import ReadingCreate, PhysicalActivityCreate
+from jupiter.views import ActivityCreate
 from jupiter.views import UserDetail, UserVisualize, UserEdit
 
 from django.contrib import admin
@@ -27,7 +28,9 @@ urlpatterns = patterns('',
 
     url(r'^user/(?P<pk>\d+)/visualize$', UserVisualize.as_view(), name='user_vidualize'),
 
-    url(r'^activity/create$', PhysicalActivityCreate.as_view(), name='physical_activity_create'),
+    url(r'^physical_activity/create$', PhysicalActivityCreate.as_view(), name='physical_activity_create'),
+
+    url(r'^activity/create$', ActivityCreate.as_view(), name='activity_create'),
 
     url(r'^activity/location$', TemplateView.as_view(template_name="jupiter/location.html"), name='activity_locator'),
 )

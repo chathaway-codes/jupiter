@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import AbstractUser, Group
 from django.core.urlresolvers import reverse
 from django.conf import settings
 
@@ -17,6 +17,14 @@ class Reading(models.Model):
   )
 
   type = models.CharField(max_length=4, choices=READING_TYPES)
+
+  def get_absolute_url(self):
+    return reverse('user_detail')
+
+class Activity(models.Model):
+  group = models.ForeignKey(Group)
+  when = models.DateTimeField()
+  where = models.CharField(max_length=255)
 
   def get_absolute_url(self):
     return reverse('user_detail')
