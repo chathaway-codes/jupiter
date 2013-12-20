@@ -33,6 +33,7 @@ class UserDetail(DetailView):
   def get_context_data(self, **kwargs):
     context = super(UserDetail, self).get_context_data(**kwargs)
     context['form'] = ReadingForm()
+    context['physical_form'] = PhysicalActivityForm()
     return context
 
   def get_object(self):

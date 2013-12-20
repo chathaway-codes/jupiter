@@ -17,6 +17,12 @@ Data Visualization for {{ object }}
 {% block content %}
   <div class="row">
     <div class="col-md-12">
+      <h3>Physical Activity</h3>
+      <div id="phys_chart" style="height:100%;width:100%;"></div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
       <h3>Weight</h3>
       <div id="weight_chart" style="height:100%;width:100%;"></div>
     </div>
@@ -55,7 +61,7 @@ Data Visualization for {{ object }}
       {% endfor %}
       ];
       $.jqplot('weight_chart',  [line], {
-        axes:{xaxis:{renderer:$.jqplot.DateAxisRenderer}},
+        axes:{yaxis:{label:'Lbs'},xaxis:{label:'Date',renderer:$.jqplot.DateAxisRenderer}},
         series:[{lineWidth:4, markerOptions:{style:'square'}}]
       });
     });
@@ -67,7 +73,7 @@ Data Visualization for {{ object }}
       {% endfor %}
       ];
       $.jqplot('height_chart',  [line], {
-        axes:{xaxis:{renderer:$.jqplot.DateAxisRenderer}},
+        axes:{yaxis:{label:'Inches'},xaxis:{label:'Date',renderer:$.jqplot.DateAxisRenderer}},
         series:[{lineWidth:4, markerOptions:{style:'square'}}]
       });
     });
@@ -79,7 +85,7 @@ Data Visualization for {{ object }}
       {% endfor %}
       ];
       $.jqplot('blsg_chart',  [line], {
-        axes:{xaxis:{renderer:$.jqplot.DateAxisRenderer}},
+        axes:{yaxis:{label:'mg/dL'},xaxis:{label:'Date',renderer:$.jqplot.DateAxisRenderer}},
         series:[{lineWidth:4, markerOptions:{style:'square'}}]
       });
     });
@@ -91,7 +97,7 @@ Data Visualization for {{ object }}
       {% endfor %}
       ];
       $.jqplot('plse_chart',  [line], {
-        axes:{xaxis:{renderer:$.jqplot.DateAxisRenderer}},
+        axes:{yaxis:{label:'BPM'},xaxis:{label:'Date',renderer:$.jqplot.DateAxisRenderer}},
         series:[{lineWidth:4, markerOptions:{style:'square'}}]
       });
     });
@@ -103,7 +109,19 @@ Data Visualization for {{ object }}
       {% endfor %}
       ];
       $.jqplot('bprs_chart',  [line], {
-        axes:{xaxis:{renderer:$.jqplot.DateAxisRenderer}},
+        axes:{yaxis:{label:'mmHg'},xaxis:{label:'Date',renderer:$.jqplot.DateAxisRenderer}},
+        series:[{lineWidth:4, markerOptions:{style:'square'}}]
+      });
+    });
+
+    $(function() {
+      var line = [
+      {% for r in user.physicalactivity_set.all %}
+        ['{{ r.when|print_timestamp }}', {{ r.duration }}],
+      {% endfor %}
+      ];
+      $.jqplot('phys_chart',  [line], {
+        axes:{yaxis:{label:'Minutes'},xaxis:{label:'Date',renderer:$.jqplot.DateAxisRenderer}},
         series:[{lineWidth:4, markerOptions:{style:'square'}}]
       });
     });

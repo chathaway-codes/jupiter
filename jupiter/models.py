@@ -25,7 +25,7 @@ class PhysicalActivity(models.Model):
   user = models.ForeignKey(settings.AUTH_USER_MODEL)
   intensity = models.DecimalField(max_digits=5, decimal_places=2)
   duration = models.DecimalField(max_digits=5, decimal_places=2)
-  when = models.DateTimeField()
+  when = models.DateTimeField(auto_now_add=True)
 
   ACTIVITY_TYPES = (
     ('JOG', 'Jogging'),
@@ -38,6 +38,8 @@ class PhysicalActivity(models.Model):
   )
 
   type = models.CharField(max_length=4, choices=ACTIVITY_TYPES)
+  def get_absolute_url(self):
+    return reverse('user_detail')
 
 class User(AbstractUser):
   # True = Female, False = Male

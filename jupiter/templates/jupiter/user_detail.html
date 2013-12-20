@@ -17,15 +17,41 @@
   {% endfor %}
 </div>
 
-<div>
-  <h3 style="color:Black;font-variant:small-caps">Report Reading</h3>
-  
+<div class="physical_activity">
+  <h3>Log Activity</h3>
+<form method="post" action="{% url "physical_activity_create" %}">
+{% csrf_token %}
+<div class="btn-group">
+  {% for value,option in physical_form.fields.type.choices %}
+    {% if value != "" %}
+    <button type="button" class="btn btn-info" id="{{ value }}" onclick="update_physical('{{ value }}')">{{ option }}</button>
+    {% endif %}
+  {% endfor %}
+</div>
+  <table>
+  <tr><th><label for="id_intensity">Intensity:&nbsp;</label></th><td><input id="id_intensity" name="intensity" step="0.01" type="number" /></td></tr>
+<tr><th><label for="id_duration">Duration:</label></th><td><input id="id_duration" name="duration" step="0.01" type="number" /></td></tr>
+  </table>
+
+  <button type="submit" class="btn btn-primary">Log!</button>
+
+  <div class="hidden">
+  <select id="id_physical_type" name="type">
+  <option value="" selected="selected">---------</option>
+  <option value="JOG">Jogging</option>
+  <option value="RUN">Running</option>
+  <option value="SWIM">Swimming</option>
+  <option value="CYCL">Cycling</option>
+  <option value="YOGA">Yoga</option>
+  <option value="SKI">Skiing</option>
+  <option value="HUNT">Being Hunted</option>
+  </select>
+  </div>
+</form>
 </div>
 
-<!-- div> 
-                <a class="btn btn-danger" href="#">            <i class="icon-repeat"></i> Reload</a>
-                <a class="btn btn-small" href="#">             <i class="icon-cog"></i></a>
-            </div> -->
+<div class="reading">
+<h3 style="color:Black;font-variant:small-caps">Report Reading</h3>
 
 <div class="btn-group">
   <button href="{% url 'user_detail' %}?type=WGHT" type="button" class="btn btn-info"  id ='WGHT' onclick="display_form('WGHT')" >Weight</button>
@@ -54,6 +80,8 @@
   <option value="BPRS">Blood Pressure</option>
   </select></div>
   </form>
+</div>
+
 </div>
 
 
@@ -88,8 +116,18 @@
       console.log("here1");
         $("#wghtDiv").removeClass('hide').addClass('show');
         $("#id_type").val(type);
-        console.log("Here");
+      }
+
+      function update_physical(type) {
+        $("#id_physical_type").val(type);
       }
   </script>
+
+  <style>
+    h3 {
+      color:Black;font-variant:small-caps;
+    }
+  </style>
+
 
 {% endblock %}

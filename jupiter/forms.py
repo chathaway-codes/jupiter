@@ -20,4 +20,4 @@ class UserForm(ModelForm):
 class PhysicalActivityForm(ModelForm):
   class Meta:
     model = PhysicalActivity
-    exclude = ('user',)
+    exclude = ('user', 'when',)
