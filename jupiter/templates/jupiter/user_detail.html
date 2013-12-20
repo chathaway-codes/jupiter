@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load bmi_tags %}
 
 {% block page-header %}
 <div>
@@ -8,6 +9,7 @@
 
 {% block content %}
 <div>
+  <h4>{{ user|prob_diabetes|safe }}</h4>
   <h3 style="color:Black;font-variant:small-caps"3>My Groups</h3>
   {% for g in user.groups.all %}
   <div class="well well-sm"  style="" >

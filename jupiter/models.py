@@ -5,7 +5,7 @@ from django.conf import settings
 
 class Reading(models.Model):
   user = models.ForeignKey(settings.AUTH_USER_MODEL)
-  reading = models.DecimalField(max_digits=5, decimal_places=2)
+  reading = models.FloatField()
   when = models.DateTimeField(auto_now_add=True)
 
   READING_TYPES = (
@@ -31,8 +31,8 @@ class Activity(models.Model):
 
 class PhysicalActivity(models.Model):
   user = models.ForeignKey(settings.AUTH_USER_MODEL)
-  intensity = models.DecimalField(max_digits=5, decimal_places=2)
-  duration = models.DecimalField(max_digits=5, decimal_places=2)
+  intensity = models.FloatField()
+  duration = models.FloatField()
   when = models.DateTimeField(auto_now_add=True)
 
   ACTIVITY_TYPES = (
@@ -52,6 +52,8 @@ class PhysicalActivity(models.Model):
 class User(AbstractUser):
   # True = Female, False = Male
   sex = models.NullBooleanField(null=True, blank=True)
+
+  age = models.IntegerField(null=True, blank=True)
 
   history = models.NullBooleanField(null=True, blank=True)
 

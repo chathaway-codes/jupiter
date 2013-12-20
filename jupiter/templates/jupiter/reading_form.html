@@ -3,7 +3,7 @@
 {% block content %}
         <form class="form-horizontal" method="post" action="">
     
-        <input type='hidden' name='csrfmiddlewaretoken' value='0YNfZNaM2LkTK0rhmpcq1Mo9iek0pEQU' />
+        {% csrf_token %}
         
             <div class="control-group" id="id_reading_group">
                 <b style="color: red"></b>
