@@ -11,10 +11,11 @@
 {% endblock %}
 
 {% block page-header %}
-Data Visualization for {{ object }}
+Data Visualization For {{ object }}
 {% endblock %}
 
 {% block content %}
+<div class="">
   <div class="row">
     <div class="col-md-12">
       <h3>Physical Activity</h3>
@@ -51,7 +52,7 @@ Data Visualization for {{ object }}
       <div id="bprs_chart" style="height:100%;width:100%;"></div>
     </div>
   </div>
-
+</div>
 
   <script type="text/javascript">
     $(function() {
@@ -128,4 +129,17 @@ Data Visualization for {{ object }}
 
 
   </script>
+
+  <style>
+     h2 {
+      color:Black;font-variant:small-caps;
+    }
+  h3 {
+      color:Black;font-variant:small-caps;
+    }
+
+
+  </style>
+
+
 {% endblock %}

@@ -1,12 +1,36 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<style>
+     .control-group  {
+      color:black;	
+      padding: 5px;
+
+    }
+
+	label {
+    font-size: 1.15em;
+    font-family: 'Brawler', sans-serif;
+    color: #000;
+        }
+
+
+  </style>
+
+ <!-- <select id="e1">
+		<option value="AL">Alabama</option>
+		<option value="WY">Wyoming</option>
+</select> -->
+
   <form class="form-horizontal" method="post" action="">
     
           {% csrf_token %}
+
+
+	
             <div class="control-group">
                 <b style="color: red"></b>
-                <label for="id_first_name" class="control-label">Name</label>
+                <label for="id_first_name" class="control-label">Name:</label>
                 <div class="controls">
                     <input id="id_first_name" maxlength="30" name="first_name" type="text"  placeHolder = 'Your Full Name' value="{{ form.first_name.value }}" />
                 </div>
@@ -24,7 +48,7 @@
         
             <div class="control-group">
                 <b style="color: red"></b>
-                <label for="id_email" class="control-label" >Email address</label>
+                <label for="id_email" class="control-label" >Email address:</label>
                 <div class="controls">
                     <input id="id_email" maxlength="75" name="email" type="email" placeHolder= "YourEmail@any.com" value="{{ form.email.value }}" />
                 </div>
@@ -33,7 +57,7 @@
         
             <div class="control-group">
                 <b style="color: red"></b>
-                <label for="id_sex" class="control-label">Your Sex</label>
+                <label for="id_sex" class="control-label">Your Sex:</label>
                 <div class="controls">
                     {{ form.sex }}
                 </div>
@@ -63,7 +87,6 @@
             </div>
 
 
-
             <div class="control-group">
                 <b style="color: red"></b>
                 <label for="id_ethnicity" class="control-label">Family Ethnicity</label>
@@ -75,14 +98,14 @@
         
             <div class="control-group">
                 <b style="color: red"></b>
-                <label for="id_history_blood_pressure" class="control-label">History Blood Pressure</label>
+                <label for="id_history_blood_pressure" class="control-label">History Blood Pressure:</label>
                 <div class="controls">
                     {{ form.history_blood_pressure }}
             </div>
         
             <div class="control-group">
                 <b style="color: red"></b>
-                <label for="id_physically_active" class="control-label">Physical Activity</label>
+                <label for="id_physically_active" class="control-label">Physically Active?</label>
                 <div class="controls">
                     {{ form.physically_active }}
                 </div>
@@ -91,15 +114,19 @@
 
             <div class="control-group">
                 <b style="color: red"></b>
-                <label for="id_age" class="control-label">Age</label>
+                <label for="id_age" class="control-label">Your Age:</label>
                 <div class="controls">
                     <input id="id_age" maxlength="30" name="age" type="text"  placeHolder = 'Age' value="{{ form.age.value }}"/>
                 </div>
 
             </div>
 
-        
+        <p></p>
         <button type="submit" class="btn btn-primary">Save changes</button>
         <button type="button" class="btn" onclick="javascript:history.go(-1)">  Cancel</button>
     </form>
+
+      <script>
+// $(document).ready(function() { $("#e1").select2(); });
+</script>
 {% endblock %}
