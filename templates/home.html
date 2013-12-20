@@ -1,7 +1,8 @@
 {% extends 'base.html' %}
 
 {% block page-header %}
-1 Col Portfolio <small>Showcase Your Work One Column at a Time</small>
+My Home
+<br />
 {% endblock %}
 
 {% block content %}
@@ -14,14 +15,13 @@
       <div class="row">
         
         <div class="col-lg-7 col-md-7">
-          <a href="#"><img class="img-responsive" src="http://placehold.it/700x300"></a>
+          <a href="#"><img class="img-responsive" style="height: 300px; width: 700px;" src="{{ STATIC_URL }}img/weight_graph.png"></a>
         </div>
 
         <div class="col-lg-5 col-md-5">
-          <h3>Project One</h3>
-          <h4>Subheading</h4>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae. Sed dui lorem, adipiscing in adipiscing et, interdum nec metus. Mauris ultricies, justo eu convallis placerat, felis enim.</p>
-          <a class="btn btn-primary" href="#">View Project <span class="glyphicon glyphicon-chevron-right"></span></a>
+          <h3>Your Weight Progress</h3>
+          <p>In the past month, you've made progress on your weight! See your progress above.</p>
+          <a class="btn btn-danger" href="{% url 'user_vidualize' pk=user.id %}">See My Progress<span class="glyphicon glyphicon-chevron-right"></span></a>
         </div>
 
       </div>
@@ -31,14 +31,14 @@
       <div class="row">
         
         <div class="col-lg-7 col-md-7">
-          <a href="#"><img class="img-responsive" src="http://placehold.it/700x300"></a>
+          <a href="#"><img class="img-responsive" src="{{ STATIC_URL }}img/last_event.png"></a>
         </div>
 
         <div class="col-lg-5 col-md-5">
-          <h3>Project Two</h3>
-          <h4>Subheading</h4>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae. Sed dui lorem, adipiscing in adipiscing et, interdum nec metus. Mauris ultricies, justo eu convallis placerat, felis enim.</p>
-          <a class="btn btn-primary" href="#">View Project <span class="glyphicon glyphicon-chevron-right"></span></a>
+          <h3>Your Last Event</h3>
+          <h4>Pineridge Cross Country Ski Area</h4>
+          <p>Your last group activity was at the Pineridge Cross Country Ski Area, in Petersburgh. It looked awesome to us!</p>
+          <a class="btn btn-danger" onclick="window.location.href='{% url 'activity_locator' %}?type=trails,parks&zip=12180'">Plan another <span class="glyphicon glyphicon-chevron-right"></span></a>
         </div>
 
       </div>
@@ -48,53 +48,16 @@
       <div class="row">
         
         <div class="col-lg-7 col-md-7">
-          <a href="#"><img class="img-responsive" src="http://placehold.it/700x300"></a>
+          <a href="#"><img class="img-responsive" style="height: 300px; width: 700px;" src="{{ STATIC_URL }}img/group_next.png"></a>
         </div>
 
         <div class="col-lg-5 col-md-5">
-          <h3>Project Three</h3>
-          <h4>Subheading</h4>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae. Sed dui lorem, adipiscing in adipiscing et, interdum nec metus. Mauris ultricies, justo eu convallis placerat, felis enim.</p>
-          <a class="btn btn-primary" href="#">View Project <span class="glyphicon glyphicon-chevron-right"></span></a>
+          <h3>Upcoming activities</h3>
+          <p>You've got 4 activities coming up with Fitness Fanatics. Way to go!</p>
+          <a class="btn btn-danger" href="{% url 'user_detail' %}">All my Activities<span class="glyphicon glyphicon-chevron-right"></span></a>
         </div>
 
       </div>
-
-      <hr>
-
-      <div class="row">
-        
-        <div class="col-lg-7 col-md-7">
-          <a href="#"><img class="img-responsive" src="http://placehold.it/700x300"></a>
-        </div>
-
-        <div class="col-lg-5 col-md-5">
-          <h3>Project Four</h3>
-          <h4>Subheading</h4>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae. Sed dui lorem, adipiscing in adipiscing et, interdum nec metus. Mauris ultricies, justo eu convallis placerat, felis enim.</p>
-          <a class="btn btn-primary" href="#">View Project <span class="glyphicon glyphicon-chevron-right"></span></a>
-        </div>
-
-      </div>
-
-      <hr>
-
-      <div class="row">
-        
-        <div class="col-lg-7 col-md-7">
-          <a href="#"><img class="img-responsive" src="http://placehold.it/700x300"></a>
-        </div>
-
-        <div class="col-lg-5 col-md-5">
-          <h3>Project Five</h3>
-          <h4>Subheading</h4>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae. Sed dui lorem, adipiscing in adipiscing et, interdum nec metus. Mauris ultricies, justo eu convallis placerat, felis enim.</p>
-          <a class="btn btn-primary" href="#">View Project <span class="glyphicon glyphicon-chevron-right"></span></a>
-        </div>
-
-      </div>
-
-      <hr>
 
   <!--     <div class="row text-center">
         
