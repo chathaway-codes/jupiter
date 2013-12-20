@@ -1,0 +1,151 @@
+<html>
+<head>
+    <title>Active</title>
+    <style type="text/css">
+    /*@import url(http://fonts.googleapis.com/css?family=Lobster+Two);*/
+    .container {
+        width: 100px;
+        clear: both;
+    }
+    .container input {
+        width: 100%;
+        clear: both;
+    }
+
+    body{
+    font-family:"Lucida Grande", "Lucida Sans Unicode", Verdana, Arial, Helvetica, sans-serif;
+    font-size:12px;
+    
+    background-color: #BFEFFF;
+    /*opacity:0.6;*/
+    background-image: linear-gradient( #b1d3ff 2px, transparent 2px),
+    linear-gradient(90deg, #b1d3ff 2px, transparent 2px),
+    linear-gradient(rgba(177,211,255,.3) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(177,211,255,.3)  1px, transparent 1px);
+    background-size:100px 100px, 100px 100px, 20px 20px, 20px 20px;
+    background-position:-2px -2px, -2px -2px, -1px -1px, -1px -1px
+
+
+    }
+    p, h1, form, button{ margin:0; padding:0;}
+    .spacer{clear:both; height:1px;}
+    /* ----------- My Form ----------- */
+    .myform{
+    margin:0px auto;
+    width:320px;
+    padding:10px;
+    }
+
+    /* ----------- stylized ----------- */
+    #stylized{
+    border:solid 2px rgba(0, 153, 255, 0.65);
+    background:#ebf4fb;
+    border-radius: 8px;
+    
+    }
+    #stylized h1 {
+    font-size:30px;
+    font-weight:bold;
+    margin-bottom:8px;
+    font-family:"Lobster Two", cursive;
+    color: rgba(0, 153, 255, 1);
+    }
+
+    #stylized p{
+    font-size:12px;
+    /*color:#657376;*/
+    margin-bottom:20px;
+    border-bottom:solid 1px rgba(0, 153, 255, 0.65);
+    padding-bottom:10px;
+    }
+    #stylized label{
+    display:block;
+    font-weight:bold;
+    text-align:right;
+    width:120px;
+    float:left;
+    line-height: 150%;
+    padding: 7px 0px 0px 0px;
+    }
+
+    #stylized .small{
+    color:#657376;
+    display:block;
+    font-size:10px;
+    font-weight:normal;
+    text-align:right;
+    width:120px;
+    padding: 0px 0px 0px 0px;
+    }
+    #stylized input{
+    float:left;
+    font-size:12px;
+    padding:4px 2px;
+    border:solid 1px rgba(0, 153, 255, 0.65);
+    width:160px;
+    margin:2px 0px 20px 10px;
+    }
+    #stylized button{
+    clear:both;
+    margin-left:130px;
+    width:120px;
+    height:31px;
+    background:#657376 url(img/button.png) no-repeat;
+    text-align:center;
+    line-height:31px;
+    color:#FFFFFF;
+    font-size:20px;
+    /*font-weight:bold;*/
+    border-radius: 5px;
+    }
+
+
+    </style>
+</head>
+<body>
+
+<br/>
+
+
+<div id="stylized" class="myform">
+    <img src="{{ STATIC_URL }}img/logoActive.png" alt="Our Logo" > 
+    <form id="form" action="index.html" method="post" name="form">       
+            <p>
+            Access enhanced content, sign-up! <br/> 
+            To Login, enter Username and password: 
+            </p>
+
+        <label>  
+            Your User Name
+            <!-- <span class="small"> Add your name </span> -->
+            </label>
+            <input id="name" type="text" name="name" placeholder="Enter your Username"></input>
+            <br/>
+        
+        <label>
+            Your Email
+            <!-- <span class="small"> Add a valid address </span> -->
+            </label>
+            <input id="email" type="text" name="email" placeholder="Enter a valid email"></input>
+            <br/>
+        
+        <label>
+            Password
+          <!--   <span class="small"> Min. 6 chars </span> -->
+            </label>
+            <input id="password" type="text" name="password" placeholder="Password: Min. 6 chars"></input>
+            <br/>
+        
+        <label>  
+            Confirm Password
+            <!-- <span class="small">  Re-enter your password </span> -->
+            </label><input id="password2" type="text" name="password" placeholder="Re-Enter Password"></input>
+<br/>
+        <span style="display: inline;">
+        <button type="submit"> Enter  </button>
+        <div class="spacer"></div></span>
+    </form>
+</div>
+
+</body>
+</html>
