@@ -3,14 +3,17 @@
 {% block extra-head %}
 <style type="text/css">
 	#map-canvas { height: 300px; }
+	#map-canvas2 { height: 300px; }
 </style>
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD1IdBMF8aX6BZUbWL5pHWZ3DAq1dETL_g&sensor=false"></script>
 <script type="text/javascript">
 		var map;
+		var map2;
 		var markers = [];
 		var centerLat = null;
 		var centerLon = null;
 		var infowindow = new google.maps.InfoWindow();
+		var infowindow2 = new google.maps.InfoWindow();
 		
 		if (param("radius") != null) {
 			radius = parseInt(param("radius"));
@@ -29,6 +32,9 @@
 			};
 			map = new google.maps.Map(document.getElementById("map-canvas"),
 				mapOptions);
+			map2 = new google.maps.Map(document.getElementById("map-canvas2"),
+				mapOptions);
+
 			
 			var marker = new google.maps.Marker({
 				position: new google.maps.LatLng(centerLat, centerLon),
@@ -53,6 +59,29 @@
 			});
 				
 			marker.setMap(map);
+
+			var marker = new google.maps.Marker({
+				position: new google.maps.LatLng(centerLat, centerLon),
+				animation: google.maps.Animation.DROP,
+				title: "Me",
+				icon: "{{ STATIC_URL }}img/maps_markers/person.png"
+			});
+			
+			var contentString = "<div>Me</div>";
+				infowindow2 = new google.maps.InfoWindow({
+					content: contentString
+				});
+				infowindow2.open(map2, marker);
+			
+			google.maps.event.addListener(marker, 'click', function() {
+				infowindow2.close();
+				var contentString = "<div>Me</div>";
+				infowindow2 = new google.maps.InfoWindow({
+					content: contentString
+				});
+				infowindow2.open(map2, marker);
+			});
+			marker.setMap(map2);
 				
 			loadAdditionalData();
 			
@@ -62,7 +91,7 @@
       google.maps.event.addDomListener(window, 'load', initialize);
 	  
 	  function loadAdditionalData() {
-		  if (param("type").indexOf("parks") != -1) {
+		  //if (param("type").indexOf("parks") != -1) {
 			  $.getJSON("{{ STATIC_URL }}json/state_parks.json", function(data) {
 				$.each(data.data, function(index, elem) {
 					if (getDistanceFromLatLonInKm(centerLat, centerLon, elem[21], elem[20]) < radius) {
@@ -123,9 +152,9 @@
 					}
 				});
 			});
-		}
+		//}
 		
-		if (param("type").indexOf("trails") != -1) {
+		//if (param("type").indexOf("trails") != -1) {
 			$.getJSON("{{ STATIC_URL }}json/hikingtrails_100_dedup.json", function(data) {
 				$.each(data.features, function(index, elem) {
 				if (getDistanceFromLatLonInKm(centerLat, centerLon, elem.geometry.geometries[0].coordinates[1], elem.geometry.geometries[0].coordinates[0]) < radius) {
@@ -139,15 +168,15 @@
 					});
 					
 					google.maps.event.addListener(marker, 'click', function() {
-						infowindow.close();
+						infowindow2.close();
 						var contentString = "<div>" + toTitleCase(elem.properties.Name) + "</div> <br><div><a class='btn btn-primary' href='/activity/create?name=" + toTitleCase(elem.properties.Name) + "'>New Event</a></div>";
-						infowindow = new google.maps.InfoWindow({
+						infowindow2 = new google.maps.InfoWindow({
 							content: contentString
 						});
-						infowindow.open(map, marker);
+						infowindow2.open(map2, marker);
 					});
 					
-					marker.setMap(map);
+					marker.setMap(map2);
 				}
 				});
 			});
@@ -165,19 +194,19 @@
 					});
 					
 					google.maps.event.addListener(marker, 'click', function() {
-						infowindow.close();
+						infowindow2.close();
 						var contentString = "<div>" + toTitleCase(elem.properties.Name) + "</div> <br><div><a class='btn btn-primary' href='/activity/create?name=" + toTitleCase(elem.properties.Name) + "'>New Event</a></div>";
-						infowindow = new google.maps.InfoWindow({
+						infowindow2 = new google.maps.InfoWindow({
 							content: contentString
 						});
-						infowindow.open(map, marker);
+						infowindow2.open(map2, marker);
 					});
 					
-					marker.setMap(map);
+					marker.setMap(map2);
 				}
 				});
 			});
-		}
+		//}
 	  }
 	
 	function getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2) {
@@ -223,6 +252,12 @@ Pick a location
 
 {% block content %}
 	<div class="row">
-	<div id="map-canvas" />
+		<h3>State Parks/Other Attractions</h3>
+		<div id="map-canvas" ></div>
+	</div>
+	<br /> <br />
+	<div class="row">
+		<h3>Hiking/Biking Trails</h3>
+		<div id="map-canvas2" ></div>
 	</div>
 {% endblock %}
