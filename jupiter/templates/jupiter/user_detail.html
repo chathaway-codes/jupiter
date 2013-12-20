@@ -38,12 +38,14 @@
 
 </div>
 
-<div class=' hide' style="padding:20px" id='wghtDiv'>
+<div class=' hide' style="padding:10px" id='wghtDiv'>
   <form method="post" action="{% url "reading_create" %}">
   {% csrf_token %}
-  <label for="id_reading">Reading:</label><input id="id_reading" name="reading" step="0.01" type="number" />
-  <button type="submit" class="btn btn-primary">Save changes</button>
+  <label for="id_reading">Reading:</label>&nbsp; <input id="id_reading" name="reading" step="0.01" type="number" />
+  &nbsp; 
+  <button type="submit" class="btn btn-primary">Save Changes</button>
   <div class="hide"><label for="id_type">Type:</label><select id="id_type" name="type">
+  
   <option value="" selected="selected">---------</option>
   <option value="WGHT">Weight</option>
   <option value="HEHT">Height</option>
