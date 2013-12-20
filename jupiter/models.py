@@ -81,6 +81,11 @@ class User(AbstractUser):
 
   physically_active = models.NullBooleanField(null=True, blank=True, choices=BOOLEAN_CHOICES)
 
+  def __unicode__(self):
+    if self.first_name == "":
+      return self.name
+    return self.first_name
+
   def get_absolute_url(self):
     return reverse('user_detail')
 
