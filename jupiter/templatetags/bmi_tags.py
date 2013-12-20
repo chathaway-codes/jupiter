@@ -26,7 +26,7 @@ def prob_diabetes(user):
     message1 		= """
 
 
-<p>Your current BMI is %s, and your current risk of diabetes is %s%s.</p>
+<p>Your current BMI is %s. Based on your age, your current risk of diabetes is %s%s.</p>
 """ % (int(round(bmi,0)), repr(current_risk), "%",)
     message2 = """
 
