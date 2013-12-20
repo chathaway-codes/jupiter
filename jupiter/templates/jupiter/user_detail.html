@@ -17,6 +17,10 @@
         <h4>{{ u }} <small><a>message</a></small></h4>
       {% endif %}
     {% endfor %}
+    <h4>Events in {{ g }}</h4>
+    {% for e in g.activity_set.all %}
+      <h5>{{ e.where }} @ {{ e.when }}</h5>
+    {% endfor %}
   </div>
   {% endfor %}
 </div>
@@ -67,7 +71,7 @@
   <h3 style="color:Black;font-variant:small-caps">Plan Group Activity</h3>
   <div >
     <button style=" background-color:#129f1f" href="{% url 'user_detail' %}?type=WGHT" type="button" class="btn btn-success " onclick="window.location.href='{% url 'activity_locator' %}?type=parks&zip=12180'">Find Park</button>
-    <button style=" background-color:#cb9d7c" href="{% url 'user_detail' %}?type=HEHT" type="button" class="btn btn-success ">Find Trail</button>
+    <button style=" background-color:#cb9d7c" href="{% url 'user_detail' %}?type=HEHT" type="button" class="btn btn-success " onclick="window.location.href='{% url 'activity_locator' %}?type=trails&zip=12180'">Find Trail</button>
   </div>
 </div>
 
