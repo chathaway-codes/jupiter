@@ -77,7 +77,7 @@
 						
 						google.maps.event.addListener(marker, 'click', function() {
 							infowindow.close();
-							var contentString = "<div>"+elem[8] + " " + elem[9] + "</div> <div>Link:<a target='_blank' href='" + elem[17][0] + "'>" + elem[17][0] + "</a>";
+							var contentString = "<div>"+elem[8] + " " + elem[9] + "</div> <div>Link:<a target='_blank' href='" + elem[17][0] + "'>" + elem[17][0] + "</a></div><br><div><a class='btn btn-primary' href='/activity/create?name=" + elem[8] + " " + elem[9] + "'>New Event</a></div>" ;
 							infowindow = new google.maps.InfoWindow({
 								content: contentString
 							});
@@ -113,7 +113,7 @@
 							} else {
 								var imgString = "<div><img src='" + elem[16][1] + "' ></img></div>";
 							}
-							var contentString = "<h3>" + elem[10] + "</h3><div>" + elem[11] + "</div>" + imgString + link_str;
+							var contentString = "<h3>" + elem[10] + "</h3><div>" + elem[11] + "</div>" + imgString + link_str + "<br><div><a class='btn btn-primary' href='/activity/create?name=" + elem[10] + "'>New Event</a></div>";
 							infowindow = new google.maps.InfoWindow({
 								content: contentString
 							});
@@ -140,7 +140,7 @@
 					
 					google.maps.event.addListener(marker, 'click', function() {
 						infowindow.close();
-						var contentString = "<div>" + toTitleCase(elem.properties.Name) + "</div>";
+						var contentString = "<div>" + toTitleCase(elem.properties.Name) + "</div> <br><div><a class='btn btn-primary' href='/activity/create?name=" + toTitleCase(elem.properties.Name) + "'>New Event</a></div>";
 						infowindow = new google.maps.InfoWindow({
 							content: contentString
 						});
@@ -166,7 +166,7 @@
 					
 					google.maps.event.addListener(marker, 'click', function() {
 						infowindow.close();
-						var contentString = "<div>" + toTitleCase(elem.properties.Name) + "</div>";
+						var contentString = "<div>" + toTitleCase(elem.properties.Name) + "</div> <br><div><a class='btn btn-primary' href='/activity/create?name=" + toTitleCase(elem.properties.Name) + "'>New Event</a></div>";
 						infowindow = new google.maps.InfoWindow({
 							content: contentString
 						});
