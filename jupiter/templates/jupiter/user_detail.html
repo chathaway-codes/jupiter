@@ -8,12 +8,14 @@
 <div>
   <h3 style="color:Black;font-variant:small-caps"3>My Groups</h3>
   {% for g in user.groups.all %}
+  <div class="well well-sm">
     <h3>{{ g }}</h3>
     {% for u in g.user_set.all %}
       {% if u != object %}
-        {{ u }} <small><a>message</a></small>
+        <h4>{{ u }} <small><a>message</a></small></h4>
       {% endif %}
     {% endfor %}
+  </div>
   {% endfor %}
 </div>
 
@@ -53,7 +55,7 @@
 <div>
   <h3 style="color:Black;font-variant:small-caps">Plan Group Activity</h3>
   <div >
-    <button style=" background-color:#129f1f" href="{% url 'user_detail' %}?type=WGHT" type="button" class="btn btn-success " onclick="window.location.href='{% url 'activity_locator' %}?type=parks&zip=12144">Find Park</button>
+    <button style=" background-color:#129f1f" href="{% url 'user_detail' %}?type=WGHT" type="button" class="btn btn-success " onclick="window.location.href='{% url 'activity_locator' %}?type=parks&zip=12180'">Find Park</button>
     <button style=" background-color:#cb9d7c" href="{% url 'user_detail' %}?type=HEHT" type="button" class="btn btn-success ">Find Trail</button>
   </div>
 </div>
